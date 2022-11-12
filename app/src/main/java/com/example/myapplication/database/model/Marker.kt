@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Marker(
     val latitude: Double,
     val longitude: Double,
-    val title: String?,
+    val title: String? = null,
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L
 )

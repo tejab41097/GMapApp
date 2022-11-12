@@ -38,29 +38,19 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment =
-            childFragmentManager.findFragmentById(R.id.fragmentContainer) as SupportMapFragment
+            childFragmentManager.findFragmentById(R.id.mapContainer) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         binding.fbAddMarker.setOnClickListener {
             this.map.let {
-                it.addMarker(
-                    MarkerOptions().position(it.cameraPosition.target)
-                )?.let { marker ->
-                    mainViewModel.selectedMarker.postValue(
-                        com.example.myapplication.database.model.Marker(
-                            marker.position.latitude,
-                            marker.position.longitude,
-                            marker.title
-                        )
+                mainViewModel.selectedMarker.postValue(
+                    com.example.myapplication.database.model.Marker(
+                        it.cameraPosition.target.latitude,
+                        it.cameraPosition.target.longitude
                     )
-                    DetailFragment.listener = object : DetailFragment.Listener {
-                        override fun onDelete(isRemove: Boolean) {
-                            if (isRemove)
-                                marker.remove()
-                        }
-                    }
-                    DetailFragment().show(parentFragmentManager, DetailFragment::javaClass.name)
-                }
+                )
+                DetailFragment.listener = null
+                DetailFragment().show(parentFragmentManager, DetailFragment::javaClass.name)
             }
         }
 
