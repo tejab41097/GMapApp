@@ -1,0 +1,13 @@
+<resources>
+    <string name="travel_app">Travel App</string>
+
+    <string name="property_name">Property Name</string>
+    <string name="property_name2">Property Name: %s</string>
+    <string name="property_coordinates">Property Coordinates</string>
+    <string name="save">save</string>
+    <string name="two_long">%f, %f</string>
+    <string name="please_enter_name">Please, enter name!</string>
+    <string name="latitude">Latitude: %f</string>
+    <string name="longitude">Longitude: %f</string>
+    <string name="saved_property_list">Saved Property List</string>
+</resources>
